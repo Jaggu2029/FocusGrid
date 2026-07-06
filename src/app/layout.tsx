@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en" className={`${inter.variable} h-full antialiased`}>
+      <html lang="en" className={`${inter.variable} h-full antialiased dark`}>
         <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
           {children}
           <Toaster position="bottom-right" />
