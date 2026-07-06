@@ -101,7 +101,6 @@ export function AppNav({ userEmail, userName, avatarUrl, isSubscribed }: AppNavP
         {/* Right: User menu */}
         <div className="flex items-center gap-3">
           <UserButton 
-            afterSignOutUrl="/"
             appearance={{
               variables: {
                 colorPrimary: "#39FF14",
