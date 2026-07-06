@@ -158,7 +158,7 @@ export function HabitGrid({ year, month }: HabitGridProps) {
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-stone-200/80 overflow-hidden shadow-[0_0_100px_-5px_rgba(57,255,20,0.15)]">
+    <div className="bg-white dark:bg-stone-950 rounded-2xl border border-stone-200/80 dark:border-stone-800/80 overflow-hidden shadow-[0_0_100px_-5px_rgba(57,255,20,0.15)]">
       {/* Section Header */}
       <div className="bg-[#6b87b5] px-6 py-3 flex items-center justify-between">
         <h3 className="text-xs font-bold text-white uppercase tracking-[0.2em] flex items-center gap-2">
@@ -176,7 +176,7 @@ export function HabitGrid({ year, month }: HabitGridProps) {
           <thead>
             {/* Week label row — each label spans its week's columns */}
             <tr>
-              <th className="sticky left-0 z-10 bg-white w-52 min-w-[208px]" />
+              <th className="sticky left-0 z-10 bg-white dark:bg-stone-950 w-52 min-w-[208px]" />
               {weeks.map((weekDays, wi) => {
                 const color =
                   WEEK_COLORS[wi] ?? WEEK_COLORS[WEEK_COLORS.length - 1];
@@ -196,8 +196,8 @@ export function HabitGrid({ year, month }: HabitGridProps) {
             </tr>
 
             {/* Day-of-week row */}
-            <tr className="bg-stone-50">
-              <th className="sticky left-0 z-10 bg-stone-50 text-left px-4 py-1.5">
+            <tr className="bg-stone-50 dark:bg-stone-900/50">
+              <th className="sticky left-0 z-10 bg-stone-50 dark:bg-stone-900/50 text-left px-4 py-1.5">
                 <span className="text-[10px] font-bold text-stone-400 uppercase tracking-widest">
                   #
                 </span>
@@ -231,8 +231,8 @@ export function HabitGrid({ year, month }: HabitGridProps) {
             </tr>
 
             {/* Date number row */}
-            <tr className="bg-stone-50/50 border-b border-stone-200/60">
-              <th className="sticky left-0 z-10 bg-stone-50/50 text-left px-4 py-1">
+            <tr className="bg-stone-50/50 dark:bg-stone-900/30 border-b border-stone-200/60 dark:border-stone-800/60">
+              <th className="sticky left-0 z-10 bg-stone-50/50 dark:bg-stone-900/30 text-left px-4 py-1">
                 <span className="text-[10px] font-bold text-stone-400 uppercase tracking-widest">
                   Habit
                 </span>
@@ -264,10 +264,10 @@ export function HabitGrid({ year, month }: HabitGridProps) {
             {habits.map((habit, hi) => (
               <tr
                 key={habit.id}
-                className="group/row border-b border-stone-100 transition-colors"
+                className="group/row border-b border-stone-100 dark:border-stone-800 transition-colors"
               >
                 {/* Habit name cell — sticky */}
-                <td className="sticky left-0 z-10 bg-white transition-colors px-4 py-2 border-r border-stone-100">
+                <td className="sticky left-0 z-10 bg-white dark:bg-stone-950 transition-colors px-4 py-2 border-r border-stone-100 dark:border-stone-800">
                   <div className="flex items-center gap-2">
                     <span className="text-xs font-bold text-stone-400 tabular-nums w-5 shrink-0">
                       {hi + 1}
@@ -282,10 +282,10 @@ export function HabitGrid({ year, month }: HabitGridProps) {
                           if (e.key === "Enter") handleRenameSubmit(habit.id, habit.name);
                           if (e.key === "Escape") setEditingHabitId(null);
                         }}
-                        className="h-6 py-0 px-1.5 text-sm w-32 ml-[-6px]"
+                        className="h-6 py-0 px-1.5 text-sm w-32 ml-[-6px] bg-transparent dark:text-stone-100"
                       />
                     ) : (
-                      <span className="text-sm text-stone-700 font-medium truncate flex-1">
+                      <span className="text-sm text-stone-700 dark:text-stone-300 font-medium truncate flex-1">
                         {habit.name}
                       </span>
                     )}
@@ -383,7 +383,7 @@ export function HabitGrid({ year, month }: HabitGridProps) {
       </div>
 
       {/* Add Habit Footer */}
-      <div className="px-4 py-3 border-t border-stone-100 bg-stone-50/30">
+      <div className="px-4 py-3 border-t border-stone-100 dark:border-stone-800 bg-stone-50/30 dark:bg-stone-900/30">
         {isAdding ? (
           <div className="flex items-center gap-3 max-w-sm">
             <Input
@@ -398,7 +398,7 @@ export function HabitGrid({ year, month }: HabitGridProps) {
                   setNewHabitName("");
                 }
               }}
-              className="h-8 text-sm bg-white"
+              className="h-8 text-sm bg-white dark:bg-stone-950 dark:text-stone-100"
             />
             <Button
               size="sm"
@@ -423,7 +423,7 @@ export function HabitGrid({ year, month }: HabitGridProps) {
           <Button
             variant="ghost"
             size="sm"
-            className="text-stone-400 hover:text-stone-700 gap-1.5 h-8 text-xs"
+            className="text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 gap-1.5 h-8 text-xs"
             onClick={() => setIsAdding(true)}
           >
             <Plus className="w-3.5 h-3.5" />
