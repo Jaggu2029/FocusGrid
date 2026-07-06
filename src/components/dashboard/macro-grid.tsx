@@ -173,7 +173,7 @@ export function MacroGrid({ weekDays, onSelectDay }: MacroGridProps) {
     <div className="flex flex-col w-full min-h-screen pb-12">
       
       {/* Top: Overall Progress (Bar Chart + Donut) */}
-      <div className="mb-4 bg-white dark:bg-stone-950 rounded-2xl border border-stone-200 dark:border-stone-800 shadow-sm overflow-x-auto">
+      <div className="mb-4 bg-stone-950 rounded-2xl border border-stone-800 shadow-sm overflow-x-auto">
         <div className="p-6 flex flex-row gap-8 items-center min-w-[600px]">
           
           {/* Left Side: Bar Chart */}
@@ -191,12 +191,12 @@ export function MacroGrid({ weekDays, onSelectDay }: MacroGridProps) {
                   tick={{ fontSize: 12, fill: "#78716c" }} 
                 />
                 <Tooltip 
-                  cursor={{ fill: 'rgba(0,0,0,0.05)' }} 
-                  contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
+                  cursor={{ fill: 'rgba(255,255,255,0.05)' }} 
+                  contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.5)', backgroundColor: '#1c1917', color: '#f5f5f4' }}
                 />
                 <Bar dataKey="completed" radius={[4, 4, 0, 0]}>
                   {overallData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.completed > 0 ? "#86efac" : "#e7e5e4"} />
+                    <Cell key={`cell-${index}`} fill={entry.completed > 0 ? "#86efac" : "#292524"} />
                   ))}
                 </Bar>
               </BarChart>
@@ -209,7 +209,7 @@ export function MacroGrid({ weekDays, onSelectDay }: MacroGridProps) {
           <div className="relative w-32 h-32 flex items-center justify-center">
             <svg className="w-32 h-32 transform -rotate-90">
               <circle
-                className="text-stone-200 dark:text-stone-800"
+                className="text-stone-800"
                 strokeWidth="12"
                 stroke="currentColor"
                 fill="transparent"
@@ -243,7 +243,7 @@ export function MacroGrid({ weekDays, onSelectDay }: MacroGridProps) {
 
       {/* Body: 7 Columns Grid */}
       <div className="w-full overflow-x-auto pb-4">
-        <div className="min-w-[800px] grid grid-cols-7 gap-px bg-stone-200 dark:bg-stone-800 border border-stone-200 dark:border-stone-800 rounded-2xl overflow-hidden shadow-sm">
+        <div className="min-w-[800px] grid grid-cols-7 gap-px bg-stone-800 border border-stone-800 rounded-2xl overflow-hidden shadow-sm">
            {weekDays.map((dateStr) => {
               const dateObj = parseISO(dateStr);
               const isToday = format(new Date(), "yyyy-MM-dd") === dateStr;
@@ -253,24 +253,24 @@ export function MacroGrid({ weekDays, onSelectDay }: MacroGridProps) {
               const strokeDashoffset = circumference - (stats.progress / 100) * circumference;
   
               return (
-                <div key={dateStr} className={`flex flex-col bg-white dark:bg-stone-950 h-full ${isToday ? "ring-2 ring-inset ring-[#7BC142] rounded z-10" : ""}`}>
+                <div key={dateStr} className={`flex flex-col bg-stone-950 h-full ${isToday ? "ring-2 ring-inset ring-[#7BC142] rounded z-10" : ""}`}>
                    {/* Header matching image style */}
-                   <div className={`p-3 text-center border-b border-stone-200 dark:border-stone-800 transition-colors ${isToday ? "bg-[#5c77a3]" : "bg-[#6b87b5]"}`}>
+                   <div className={`p-3 text-center border-b border-stone-800 transition-colors ${isToday ? "bg-[#5c77a3]" : "bg-[#6b87b5]"}`}>
                      <div className="font-bold text-white">{format(dateObj, "EEEE")}</div>
                      <div className="text-xs font-medium opacity-90 text-stone-200">{format(dateObj, "dd.MM.yyyy")}</div>
                    </div>
   
                    {/* Ring section */}
                    <div 
-                     className="p-4 flex justify-center relative group cursor-pointer hover:bg-stone-50 dark:hover:bg-stone-900/50 transition-colors"
+                     className="p-4 flex justify-center relative group cursor-pointer hover:bg-stone-900/50 transition-colors"
                      onClick={() => onSelectDay(dateStr)}
                    >
                      <div className="relative w-16 h-16 flex items-center justify-center">
                        <svg className="w-16 h-16 transform -rotate-90">
-                          <circle className="text-stone-200 dark:text-stone-800" strokeWidth="4" stroke="currentColor" fill="transparent" r={radius} cx="32" cy="32" />
+                          <circle className="text-stone-800" strokeWidth="4" stroke="currentColor" fill="transparent" r={radius} cx="32" cy="32" />
                           <circle className="text-[#39FF14] transition-all duration-700 ease-in-out" strokeWidth="4" strokeDasharray={circumference} strokeDashoffset={strokeDashoffset} strokeLinecap="round" stroke="currentColor" fill="transparent" r={radius} cx="32" cy="32" />
                        </svg>
-                       <span className="absolute text-xs font-bold text-stone-700 dark:text-stone-300">{stats.progress}%</span>
+                       <span className="absolute text-xs font-bold text-stone-300">{stats.progress}%</span>
                      </div>
                      {/* Hover Overlay */}
                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-200 backdrop-blur-[2px]">
@@ -315,7 +315,7 @@ export function MacroGrid({ weekDays, onSelectDay }: MacroGridProps) {
                                 />
                               </div>
                             ) : (
-                              <span className={`text-sm flex-1 leading-tight break-all ${td.completed ? "line-through text-stone-400 dark:text-stone-600" : "text-stone-700 dark:text-stone-300"}`}>
+                              <span className={`text-sm flex-1 leading-tight break-all ${td.completed ? "line-through text-stone-600" : "text-stone-300"}`}>
                                 {task?.title || "Untitled Task"}
                               </span>
                             )}
@@ -350,8 +350,8 @@ export function MacroGrid({ weekDays, onSelectDay }: MacroGridProps) {
                                }}
                                className={`shrink-0 w-3.5 h-3.5 rounded-sm border flex items-center justify-center transition-all ${
                                  td.completed 
-                                   ? "bg-stone-800 border-stone-800 text-white dark:bg-stone-200 dark:border-stone-200 dark:text-stone-900" 
-                                   : "border-stone-300 dark:border-stone-600 hover:border-stone-400"
+                                   ? "bg-stone-200 border-stone-200 text-stone-900" 
+                                   : "border-stone-600 hover:border-stone-400"
                                }`}
                              >
                                {td.completed && <Check className="w-2.5 h-2.5" strokeWidth={4} />}
@@ -379,7 +379,7 @@ export function MacroGrid({ weekDays, onSelectDay }: MacroGridProps) {
                        <Button 
                          variant="ghost" 
                          size="sm" 
-                         className="text-stone-400 hover:text-stone-800 dark:hover:text-stone-200 w-full justify-start gap-1 h-7 text-xs mt-2"
+                         className="text-stone-400 hover:text-stone-200 w-full justify-start gap-1 h-7 text-xs mt-2"
                          onClick={() => setAddingForDay(dateStr)}
                        >
                          <Plus className="w-3 h-3" />
@@ -389,16 +389,16 @@ export function MacroGrid({ weekDays, onSelectDay }: MacroGridProps) {
                    </div>
   
                    {/* Column Footer */}
-                   <div className="p-3 border-t border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900/50 flex flex-col gap-1.5 mt-auto">
+                   <div className="p-3 border-t border-stone-800 bg-stone-900/50 flex flex-col gap-1.5 mt-auto">
                      <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider">
-                       <span className="text-stone-700 dark:text-stone-300">Done</span>
-                       <span className="text-stone-900 dark:text-stone-100 text-sm">{stats.completed}</span>
+                       <span className="text-stone-300">Done</span>
+                       <span className="text-stone-100 text-sm">{stats.completed}</span>
                      </div>
                      <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider">
                        <span className="text-stone-500">Left</span>
-                       <span className="text-stone-900 dark:text-stone-100 text-sm">{stats.total - stats.completed}</span>
+                       <span className="text-stone-100 text-sm">{stats.total - stats.completed}</span>
                      </div>
-                     <div className="h-1 w-full bg-stone-200 dark:bg-stone-800 rounded-full overflow-hidden mt-1">
+                     <div className="h-1 w-full bg-stone-800 rounded-full overflow-hidden mt-1">
                        <div className="h-full bg-[#39FF14] transition-all duration-500" style={{ width: `${stats.progress}%` }} />
                      </div>
                    </div>
