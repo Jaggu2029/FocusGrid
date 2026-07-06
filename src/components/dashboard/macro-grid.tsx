@@ -173,15 +173,16 @@ export function MacroGrid({ weekDays, onSelectDay }: MacroGridProps) {
     <div className="flex flex-col w-full min-h-screen pb-12">
       
       {/* Top: Overall Progress (Bar Chart + Donut) */}
-      <div className="mb-4 bg-white dark:bg-stone-950 rounded-2xl border border-stone-200 dark:border-stone-800 shadow-sm p-6 flex flex-col md:flex-row gap-8 items-center">
-        
-        {/* Left Side: Bar Chart */}
-        <div className="flex-1 w-full flex flex-col h-40">
-          <h3 className="text-sm font-bold text-stone-500 uppercase tracking-wider mb-2 text-center md:text-left">
-            Overall Progress
-          </h3>
-          <div className="flex-1 min-h-0">
-            <ResponsiveContainer width="100%" height="100%">
+      <div className="mb-4 bg-white dark:bg-stone-950 rounded-2xl border border-stone-200 dark:border-stone-800 shadow-sm overflow-x-auto">
+        <div className="p-6 flex flex-row gap-8 items-center min-w-[600px]">
+          
+          {/* Left Side: Bar Chart */}
+          <div className="flex-1 w-full flex flex-col h-40">
+            <h3 className="text-sm font-bold text-stone-500 uppercase tracking-wider mb-2 text-left">
+              Overall Progress
+            </h3>
+            <div className="flex-1 min-h-0">
+              <ResponsiveContainer width="100%" height="100%">
               <BarChart data={overallData} margin={{ top: 0, right: 0, left: -20, bottom: 0 }}>
                 <XAxis 
                   dataKey="day" 

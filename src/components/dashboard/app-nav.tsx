@@ -42,7 +42,7 @@ export function AppNav({ userEmail, userName, avatarUrl, isSubscribed }: AppNavP
     : userEmail.charAt(0).toUpperCase();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-stone-200/80 bg-[#faf9f6]/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-stone-200/80 dark:border-stone-800/80 bg-[#faf9f6]/80 dark:bg-[#0a0a0a]/80 backdrop-blur-md">
       <div className="max-w-[1600px] mx-auto flex h-14 items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Left: Logo + Nav */}
         <div className="flex items-center gap-6">
@@ -64,7 +64,7 @@ export function AppNav({ userEmail, userName, avatarUrl, isSubscribed }: AppNavP
                 <line x1="19" y1="12" x2="23" y2="12" />
               </svg>
             </div>
-            <span className="font-semibold text-stone-900 hidden sm:inline-block">
+            <span className="font-semibold text-stone-900 dark:text-stone-100 hidden sm:inline-block">
               FocusGrid
             </span>
           </Link>
@@ -85,8 +85,8 @@ export function AppNav({ userEmail, userName, avatarUrl, isSubscribed }: AppNavP
                       link.special
                         ? "bg-blue-600 hover:bg-blue-700 text-white font-medium"
                         : isActive
-                        ? "bg-stone-100 text-stone-900 font-medium"
-                        : "text-stone-500 hover:text-stone-900"
+                        ? "bg-stone-200 dark:bg-stone-800 text-stone-900 dark:text-stone-100 font-medium"
+                        : "text-stone-500 hover:text-stone-900 dark:hover:text-stone-100"
                     }`
                   })}
                 >
