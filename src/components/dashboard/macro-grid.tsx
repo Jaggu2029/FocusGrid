@@ -238,6 +238,7 @@ export function MacroGrid({ weekDays, onSelectDay }: MacroGridProps) {
             {totalCompletedWeek} / {totalAssignedWeek} completed
           </span>
         </div>
+        </div>
       </div>
 
       {/* Body: 7 Columns Grid */}
